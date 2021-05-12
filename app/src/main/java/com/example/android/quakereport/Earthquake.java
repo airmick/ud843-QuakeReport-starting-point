@@ -1,50 +1,60 @@
 package com.example.android.quakereport;
 
 public class Earthquake {
-    private String mag;
-    private String places;
-    private String date;
+    private double mag;
+    private String location;
+
+    /** Time of the earthquake */
+    private long mTimeInMilliseconds;
+
+    private String mUrl;
 
     public Earthquake(){
 
     }
 
-    public Earthquake(String mag, String places, String date) {
+    /**
+     * Constructs a new {@link Earthquake} object.
+     *
+     * @param mag is the magnitude (size) of the earthquake
+     * @param location is the location where the earthquake happened
+     * @param mTimeInMilliseconds is the time in milliseconds (from the Epoch) when the
+     *                           earthquake happened
+     * @param mUrl is the website URL to find more details about the earthquake
+     */
+    public Earthquake(double mag, String location, long mTimeInMilliseconds, String mUrl) {
         this.mag = mag;
-        this.places = places;
-        this.date = date;
+        this.location = location;
+        this.mTimeInMilliseconds = mTimeInMilliseconds;
+        this.mUrl = mUrl;
     }
 
-    public String getMag() {
+    public double getMag() {
         return mag;
     }
 
-    public void setMag(String mag) {
-        this.mag = mag;
+    public String getLocation() {
+        return location;
     }
 
-    public String getPlaces() {
-        return places;
+    public long getTimeInMilliseconds() {
+        return mTimeInMilliseconds;
     }
 
-    public void setPlaces(String places) {
-        this.places = places;
-    }
-
-    public String getDate() {
-        return date;
-    }
-
-    public void setDate(String date) {
-        this.date = date;
+    /**
+     * Returns the website URL to find more information about the earthquake.
+     */
+    public String getUrl() {
+        return mUrl;
     }
 
     @Override
     public String toString() {
         return "Earthquake{" +
                 "mag=" + mag +
-                ", places='" + places + '\'' +
-                ", date='" + date + '\'' +
+                ", location='" + location + '\'' +
+                ", mTimeInMilliseconds=" + mTimeInMilliseconds +
+                ", mUrl='" + mUrl + '\'' +
                 '}';
     }
 }
